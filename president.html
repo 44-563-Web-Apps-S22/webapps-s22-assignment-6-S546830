@@ -8,34 +8,65 @@
 <h2>President guess by Malayaja</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="form1_pre_name">Enter the secret president name</label>
+    <input type ="password" id="secret" name="secret_name" min=10 max=50 step=2 value="George Washington"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label for="form1_guess_president">Guess the president</label>
+    <input type ="text" id="input" name="user_input" autofocus> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="checkGuess()" value="Check the guess">
 </form>
-
-
-<p id="result">This text will be replaced </p>
 
 <script> 
 
-function resolveForm (){
+function checkGuess (){
     console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
+    correct=0
+    wrong=0
+    age = document.getElementById("secret").value
+    nick = document.getElementById("input").value
     confirmed = confirm("Are these the values? "+age+" and "+nick)
     
     out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
+    if(age==nick){
+        correct++
+        alert("You got it right")
+        out.innerHTML = "correct count:"+ correct
     } else {
-        out.innerHTML = "Values were not confirmed"
+        wrong++
+        alert("Wrong President")
+        out.innerHTML = "wrong count:"+ wrong
     }
 }
 </script>
+<p id="result">This text will be replaced </p>
 
+<label>Image changes on click</label><br>
+    <div class="container">
+        <img src="Vadodara.jpg" class="rounded" id="image" style="height: 100px;width: 100px;" onclick="swapImage()">
+    </div>
+
+    <script>
+        let useImage = 1;
+        function swapImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("image").src = "Abbotts blabber.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    document.getElementById("image").src = "Abyssinian Woodpecker.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    document.getElementById("image").src = "Vadodara.jpg";
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+    
 </body>
 </html> 
